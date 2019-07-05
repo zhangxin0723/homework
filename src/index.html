@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>串行加载图片</title>
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+</body>
+<script>
+    let arr = [
+        "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1785199001,3375299815&fm=27&gp=0.jpg",
+        "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4206348751,4177014175&fm=27&gp=0.jpg",
+        "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3055253914,488478078&fm=27&gp=0.jpg",
+        "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2902095061,326414169&fm=27&gp=0.jpg",
+        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3298005417,2605075504&fm=27&gp=0.jpg"
+    ]
+    let div = document.querySelector("div");
+
+    function render(data) {
+        return new Promise((resolve, reject) => {
+            let img = document.createElement("img");
+            img.src = data;
+            div.appendChild(img);
+            setTimeout(resolve, 1000)
+        })
+    }
+
+    async function getData(data) {
+        for (let i = 0; i < data.length; i++) {
+            await render(data[i])
+        }
+    }
+    getData(arr)
+</script>
+
+</html>
