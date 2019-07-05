@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        let img = [
+            'http://pic39.nipic.com/20140321/18063302_210604412116_2.jpg',
+            'http://pic27.nipic.com/20130305/9252150_153617685375_2.jpg',
+            'http://pic26.nipic.com/20121221/9252150_142515375000_2.jpg',
+            'http://pic41.nipic.com/20140514/5295460_234432363121_2.jpg'
+        ]
+        let box = document.querySelector('.box')
+        function promiseImg(src) {
+            return new Promise((resolve,reject) => {
+                let img = document.createElement('img')
+                img.src = src
+                box.appendChild(img)
+                setTimeout(resolve,1000)
+            })
+        }
+        async function Pimg() {
+            for(var i = 0; i < img.length;i++) {
+                await promiseImg(img[i])
+            }
+        }
+        Pimg()
+    </script>
+</body>
+</html>
