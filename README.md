@@ -1,2 +1,2 @@
 # project
-张鑫 刘录
+promise图片加载
